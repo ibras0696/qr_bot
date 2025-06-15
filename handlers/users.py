@@ -18,6 +18,9 @@ async def qr_cmd(message: Message):
 async def test_error_cmd(message: Message):
     raise Exception('Тестовая Ошибка')
 
+@router.message(Command('id'))
+async def id_test_cmd(message: Message):
+    await message.answer(f'ID: {message.from_user.id}')
 
 @router.message(F.text)
 async def qr_url_cmd(message: Message):
